@@ -1,0 +1,30 @@
+
+<table>
+    <thead>
+        <tr>
+          <th rowspan="3" colspan="2"></th>
+        </tr>
+        <tr ng-repeat="(key, col) in settings.cols">
+          <th>{{ key }}</th>
+
+          <th ng-repeat="colValue in col.colValues track by $index"
+              colspan="{{ colValue.secondaryColCount ? colValue.secondaryColCount : 1 }}"
+              rowspan="{{ colValue.secondaryColCount ? 1 : 2 }}">
+              {{ colValue.value }}
+          </th>
+        </tr>
+        <tr>
+          <th ng-repeat="row in settings.rows">{{ row }}</th>
+          <th></th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="row in tableValues">
+      <tr>
+        <td rowspan="{{ row.secondaryRowsCount+1 }}">{{ row.primaryValue }}</td>
+      </tr>
+      <tr ng-repeat="secondaryRow in row.secondaryRowsValues">
+        <td colspan="2">{{ secondaryRow.secondaryRowName }}</td>
+        <td ng-repeat="rowValue in secondaryRow.rowValues track by $index">{{ rowValue }}</td>
+      </tr>
+    </tbody>
+</table>
