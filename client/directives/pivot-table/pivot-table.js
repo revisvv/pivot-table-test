@@ -25,7 +25,6 @@ app.directive('pivotTable', function(dataService) {
           scope.data = dataService.composeData(scope.settings.cols, scope.settings.rows, scope.settings.valueFunc, response.data);
           scope.settings.cols = scope.data['colsValues'];
           scope.tableValues = scope.data['tableValues'];
-          scope.data = response.data;
         });
       }
     };

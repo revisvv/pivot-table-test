@@ -10,7 +10,6 @@ app.controller("MainCtrl", function ($scope) {
       rows: ["year", "department"],
       cols: ["brand", "model"],
       valueFunc: function(values) {
-        console.log(values);
         return values.length;
       }
     }
