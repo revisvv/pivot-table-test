@@ -9,7 +9,7 @@ app.service('dataService', function($http) {
   }
 
   this.composeData = (cols, rows, valueFunc, data) => {
-    let colsValues = {}, tableValues = {}, toReturn = {};
+    const colsValues = {};
 
     colsValues[cols[0]] = { colValues: [] };
     colsValues[cols[1]] = { colValues: [] };
@@ -31,7 +31,7 @@ app.service('dataService', function($http) {
 
     colsValues[cols[0]] = { colValues: primaryCols };
 
-    tableValues = _.uniq(_.pluck(data, rows[0])).map((primaryRow) => {
+    const tableValues = _.uniq(_.pluck(data, rows[0])).map((primaryRow) => {
       const secondaryRowQuery = {};
       secondaryRowQuery[`${rows[0]}`] = primaryRow;
 
@@ -63,7 +63,7 @@ app.service('dataService', function($http) {
       }
     });
 
-    return toReturn = { colsValues, tableValues };
+    return { colsValues, tableValues };
   }
 
   return this;
